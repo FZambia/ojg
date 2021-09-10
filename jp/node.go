@@ -260,7 +260,7 @@ func (x Expr) GetNodes(n gen.Node) (results []gen.Node) {
 			}
 		case Slice:
 			start := 0
-			end := math.MaxInt64
+			end := math.MaxInt
 			step := 1
 			if 0 < len(tf) {
 				start = tf[0]
@@ -535,7 +535,7 @@ func (x Expr) FirstNode(n gen.Node) (result gen.Node) {
 			}
 		case Slice:
 			start := 0
-			end := math.MaxInt64
+			end := math.MaxInt
 			step := 1
 			if 0 < len(tf) {
 				start = tf[0]

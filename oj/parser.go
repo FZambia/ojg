@@ -337,7 +337,7 @@ func (p *Parser) parseBuffer(buf []byte, last bool) error {
 					break
 				}
 				p.num.I = p.num.I*10 + uint64(b-'0')
-				if math.MaxInt64 < p.num.I {
+				if math.MaxInt < p.num.I {
 					p.num.FillBig()
 					break
 				}
@@ -419,7 +419,7 @@ func (p *Parser) parseBuffer(buf []byte, last bool) error {
 				}
 				p.num.Frac = p.num.Frac*10 + uint64(b-'0')
 				p.num.Div *= 10.0
-				if math.MaxInt64 < p.num.Frac {
+				if math.MaxInt < p.num.Frac {
 					p.num.FillBig()
 					break
 				}

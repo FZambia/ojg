@@ -233,7 +233,7 @@ func (t *Tokenizer) tokenizeBuffer(buf []byte, last bool) {
 					break
 				}
 				t.num.I = t.num.I*10 + uint64(b-'0')
-				if math.MaxInt64 < t.num.I {
+				if math.MaxInt < t.num.I {
 					t.num.FillBig()
 					break
 				}
@@ -332,7 +332,7 @@ func (t *Tokenizer) tokenizeBuffer(buf []byte, last bool) {
 				}
 				t.num.Frac = t.num.Frac*10 + uint64(b-'0')
 				t.num.Div *= 10.0
-				if math.MaxInt64 < t.num.Frac {
+				if math.MaxInt < t.num.Frac {
 					t.num.FillBig()
 					break
 				}

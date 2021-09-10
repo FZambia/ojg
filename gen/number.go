@@ -10,7 +10,7 @@ import (
 
 // BigLimit is the limit before a number is converted into a Big
 // instance. (9223372036854775807 / 10 = 922337203685477580)
-const BigLimit = math.MaxInt64 / 10
+const BigLimit = math.MaxInt / 10
 
 // Number is used internally by parsers.
 type Number struct {
@@ -43,7 +43,7 @@ func (n *Number) AddDigit(b byte) {
 		n.BigBuf = append(n.BigBuf, b)
 	} else if n.I <= BigLimit {
 		n.I = n.I*10 + uint64(b-'0')
-		if math.MaxInt64 < n.I {
+		if math.MaxInt < n.I {
 			n.FillBig()
 		}
 	} else {
@@ -59,7 +59,7 @@ func (n *Number) AddFrac(b byte) {
 	} else if n.Frac <= BigLimit {
 		n.Frac = n.Frac*10 + uint64(b-'0')
 		n.Div *= 10.0
-		if math.MaxInt64 < n.Frac {
+		if math.MaxInt < n.Frac {
 			n.FillBig()
 		}
 	} else { // big
